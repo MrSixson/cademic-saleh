@@ -30,6 +30,7 @@ export type LevelMechanic =
   | 'speed_hunt'
   | 'combination_challenge'
   | 'treasure_words'
+  | 'letter_circle_builder'
   | 'tashdid_hunter'
   | 'negareh_sound_match'
   | 'khwa_exception'
@@ -203,6 +204,7 @@ export interface QuestionData {
   basketballTrashSetup?: { items: { id: string; word: string; isCorrect: boolean; correctSpelling?: string; explanation?: string; emoji?: string }[] };
   syllableQuizSetup?: { items: { id: string; word: string; syllableCount: number; syllablesDisplay: string[]; emoji: string; explanation?: string }[] };
   burgerSyllablesSetup?: { targetWord: string; targetEmoji?: string; syllables: string[]; shuffledSyllables: string[] };
+  letterCircleSetup?: { items: { word: string; emoji: string; meaning: string; letters: string[] }[] };
   jellyfishItemsSetup?: { id: string; text: string; isTarget: boolean; color: string }[];
   sandyKarateBoardsSetup?: { id: string; text: string; isWrongWord: boolean; correctForm?: string; explanation?: string }[];
   rhymeSetup?: { baseWord: string; baseEmoji?: string; options: { id: string; text: string; isRhyme: boolean; emoji?: string }[] };
