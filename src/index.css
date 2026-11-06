@@ -621,3 +621,26 @@ button:disabled { cursor: not-allowed; }
 @media(prefers-reduced-motion:reduce) {
   .home-character-button,.home-shortcut,.home-icon-button,.home-primary-button,.home-secondary-button { transition:none; }
 }
+
+/* Screen-specific composition and responsive polish */
+.map-screen,.game-screen,.dashboard-screen { width:min(100% - 28px, 1120px); }
+.map-hero { gap:18px; }
+.map-level-card { border-radius:22px !important; border:1px solid var(--ui-line) !important; box-shadow:0 16px 38px rgba(0,8,20,.24) !important; }
+.map-level-card:hover { transform:translateY(-4px) !important; border-color:rgba(112,224,218,.45) !important; }
+.map-level-card .text-slate-900,.cartoon-sponge-panel .text-amber-950 { color:#effcff !important; }
+.map-level-card .text-cyan-900 { color:#a9d8df !important; }
+.map-level-card .bg-emerald-500 { background:linear-gradient(120deg,#71d6b0,#39a987) !important; }
+.game-topbar { gap:12px; }
+.game-arena { min-height: min(68vh, 680px); }
+.game-screen .marine-parchment { box-shadow:0 18px 45px rgba(0,8,20,.24) !important; }
+.dashboard-screen { gap:18px; }
+.dashboard-screen > :first-child { margin-bottom:4px !important; }
+.dashboard-screen .grid > div { border-radius:20px !important; }
+.dashboard-screen .text-slate-900 { color:#effcff !important; }
+.dashboard-screen .text-slate-700 { color:#c0dbe2 !important; }
+@media(max-width:640px) {
+ .map-screen,.game-screen,.dashboard-screen { width:calc(100% - 18px); padding-inline:0; }
+ .map-topbar,.game-topbar { flex-wrap:wrap; gap:10px; }
+ .map-hero { align-items:stretch; }
+ .game-arena { min-height:60vh; }
+}
