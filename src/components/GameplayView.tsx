@@ -740,6 +740,11 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
                     <img
                       src={questionData.imageQuizSetup.imageUrl}
                       alt={questionData.imageQuizSetup.imageNamePersian}
+                      width={340}
+                      height={256}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
                       className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
                       referrerPolicy="no-referrer"
                     />

@@ -4,11 +4,6 @@ import { GAME_LEVELS, IMAGE_QUIZ_DATA } from '../data/levels';
 import { getCharacterById } from '../data/characters';
 import { CharacterAvatar } from './CharacterAvatar';
 import { audioService } from '../services/audioService';
-import pineappleBg from '../assets/images/pineapple_bg_1787504057995.jpg';
-import jellyfishFieldsBg from '../assets/images/jellyfish_fields_bg_1787504073235.jpg';
-import krustyKrabBg from '../assets/images/krusty_krab_bg_1787504086571.jpg';
-import sandysTreedomeBg from '../assets/images/sandys_treedome_bg_1787504098635.jpg';
-import neptunePalaceBg from '../assets/images/neptune_palace_bg_1787504113369.jpg';
 import { 
   Star, 
   Lock, 
@@ -61,17 +56,6 @@ export const WorldMap: React.FC<WorldMapProps> = ({
     } else {
       audioService.playWrong();
       audioService.speakPersian(`مرحله ${level.id} هنوز قفل است! مرحله قبلی را کامل کن.`);
-    }
-  };
-
-  const getLevelImage = (env: string) => {
-    switch (env) {
-      case 'pineapple_home': return pineappleBg;
-      case 'jellyfish_fields': return jellyfishFieldsBg;
-      case 'krusty_krab': return krustyKrabBg;
-      case 'sandy_dome': return sandysTreedomeBg;
-      case 'neptune_palace': return neptunePalaceBg;
-      default: return jellyfishFieldsBg;
     }
   };
 
@@ -226,7 +210,6 @@ export const WorldMap: React.FC<WorldMapProps> = ({
             const isCurrent = level.id === playerState.currentLevel && !isCompleted;
             const isUnlocked = level.id <= playerState.currentLevel || isCompleted;
             const starsCount = result?.stars || 0;
-            const bgImg = getLevelImage(level.environment);
 
             const startsChapter = level.id === 1 || (level.id >= 10 && (level.id - 10) % 10 === 0);
             const chapterIndex = Math.min(9, Math.floor((level.id - 10) / 10));
@@ -258,15 +241,8 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                     : 'bg-slate-900/60 border-3 border-slate-700/60 rounded-[2rem] opacity-55 cursor-not-allowed'
                 }`}
               >
-                {/* Background Watermark with subtle opacity */}
-                <div className="absolute inset-0 pointer-events-none opacity-15 overflow-hidden mix-blend-overlay">
-                  <img
-                    src={bgImg}
-                    alt={level.title}
-                    className="w-full h-full object-cover object-center"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
+                {/* Lightweight decorative overlay avoids one large image request per level card */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-cyan-300/10 via-transparent to-blue-950/20" />
 
                 {/* Header inside Card */}
                 <div className="flex items-center justify-between relative z-10">
@@ -324,6 +300,11 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                       <img
                         src={IMAGE_QUIZ_DATA[level.id].imageUrl}
                         alt={IMAGE_QUIZ_DATA[level.id].imageNamePersian}
+                        width={64}
+                        height={64}
+                        loading="lazy"
+                        decoding="async"
+                        fetchPriority="low"
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
                       />
