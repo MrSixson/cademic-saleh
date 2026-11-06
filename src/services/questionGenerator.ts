@@ -558,7 +558,49 @@ export function generateQuestionForLevel(
     return generateQuestionForLevel(mockLevel, roundNumber, totalRounds, adaptiveWeakLetters);
   }
 
-  // 20. TREASURE WORDS
+  // 20. LETTER CIRCLE BUILDER (Stage 23)
+  if (mechanic === 'letter_circle_builder') {
+    const wordsPerRound = [4, 6, 10][Math.max(0, Math.min(2, roundNumber - 1))];
+    const normalizeWord = (value: string) => value.replace(/[\\u200c\\s\\u0640\\u064b-\\u065f\\u0670]/g, '');
+    let candidates = eligibleWords.filter(word => {
+      const letters = Array.from(normalizeWord(word.persianWord));
+      return letters.length >= 2 && letters.length <= 8;
+    });
+    if (candidates.length < wordsPerRound) {
+      candidates = WORD_DATABASE.filter(word => {
+        const letters = Array.from(normalizeWord(word.persianWord));
+        return letters.length >= 2 && letters.length <= 8;
+      });
+    }
+    const uniqueCandidates = Array.from(
+      new Map(candidates.map(word => [normalizeWord(word.persianWord), word])).values()
+    );
+    const shuffledCandidates = [...uniqueCandidates].sort(() => Math.random() - 0.5);
+    const items = shuffledCandidates.slice(0, wordsPerRound).map(word => {
+      const letters = Array.from(normalizeWord(word.persianWord));
+      for (let i = letters.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letters[i], letters[j]] = [letters[j], letters[i]];
+      }
+      return {
+        word: normalizeWord(word.persianWord),
+        emoji: word.meaningEmoji || word.iconEmoji || '🧩',
+        meaning: word.meaningImageDesc || word.sampleSentence || 'با انتخاب حروف، این واژه را بساز.',
+        letters
+      };
+    });
+
+    return {
+      roundNumber,
+      totalRounds,
+      mechanic,
+      letterCircleSetup: { items },
+      promptText: `با انتخاب حروف داخل دایره، ${wordsPerRound} واژه را بساز!`,
+      hint: 'به تصویر و راهنما نگاه کن؛ حروف را به ترتیب درست لمس کن تا کلمه کامل شود.'
+    };
+  }
+
+  // 21. TREASURE WORDS
   if (mechanic === 'treasure_words') {
     const advanceWords = eligibleWords.filter(w => w.difficulty >= 2);
     const target = advanceWords[(seed + roundNumber) % advanceWords.length] || WORD_DATABASE[0];
