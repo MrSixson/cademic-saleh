@@ -454,7 +454,7 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
                 <span>زمان شکار: {huntTimer} ثانیه</span>
               </div>
             )}
-            {/* Prompt Banner: Organic Marine Parchment Scroll */
+            {/* Prompt Banner: Organic Marine Parchment Scroll */}
             {level.mechanic !== 'twenty_bubble_spelling' && level.mechanic !== 'basketball_trash_sort' && level.mechanic !== 'syllable_count_quiz' && (
               <div className="marine-parchment px-6 py-3.5 shadow-xl mb-6 text-center">
                 <h2 className="text-lg sm:text-xl font-black text-amber-950 flex items-center justify-center gap-2">
