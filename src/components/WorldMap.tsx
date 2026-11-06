@@ -71,9 +71,9 @@ export const WorldMap: React.FC<WorldMapProps> = ({
   };
 
   return (
-    <div className="flex-1 w-full max-w-5xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex flex-col z-20 pb-24 select-none">
+    <div className="map-screen flex-1 w-full max-w-5xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex flex-col z-20 pb-24 select-none">
       {/* Top Header & HUD: Organic Driftwood Plank */}
-      <header className="flex items-center justify-between cartoon-wood-panel p-3 sm:p-4 mb-4 sm:mb-6 shadow-2xl relative z-30">
+      <header className="map-topbar flex items-center justify-between cartoon-wood-panel p-3 sm:p-4 mb-4 sm:mb-6 shadow-2xl relative z-30">
         {/* Decorative Wooden Rivets */}
         <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-amber-950 border border-amber-600/80 shadow-inner" />
         <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-amber-950 border border-amber-600/80 shadow-inner" />
@@ -151,7 +151,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
       </header>
 
       {/* Hero Banner: Organic Marine Parchment Sign */}
-      <div className="marine-parchment p-3 sm:p-5 mb-6 flex flex-col sm:flex-row items-center justify-between shadow-2xl relative z-20">
+      <div className="map-hero marine-parchment p-3 sm:p-5 mb-6 flex flex-col sm:flex-row items-center justify-between shadow-2xl relative z-20">
         <div 
           onClick={() => {
             if (onOpenCharacterSelect) {
@@ -227,7 +227,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
               <div
                 key={level.id}
                 onClick={() => handleNodeClick(level)}
-                className={`p-4 sm:p-5 relative overflow-hidden transition-all duration-300 cursor-pointer select-none flex flex-col justify-between min-h-[165px] ${
+                className={`map-level-card p-4 sm:p-5 relative overflow-hidden transition-all duration-300 cursor-pointer select-none flex flex-col justify-between min-h-[165px] ${
                   isCurrent
                     ? 'cartoon-sponge-panel scale-[1.02] shadow-2xl'
                     : isCompleted

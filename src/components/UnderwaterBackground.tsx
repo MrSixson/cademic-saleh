@@ -207,12 +207,7 @@ export const UnderwaterBackground: React.FC<UnderwaterBackgroundProps> = ({
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-amber-600 via-amber-400 to-transparent opacity-85" />
         <div className="absolute bottom-0 left-0 right-0 h-8 bg-amber-400 border-t-4 border-amber-600" />
 
-        {/* Swaying Cartoon Sea Kelp Left */}
-        <div className="absolute bottom-4 left-6 flex items-end gap-2 opacity-85">
-          <div className="w-5 h-28 bg-emerald-500 border-2 border-emerald-700 rounded-t-full origin-bottom animate-sway" />
-          <div className="w-6 h-36 bg-lime-400 border-2 border-lime-600 rounded-t-full origin-bottom animate-sway" style={{ animationDelay: '1.2s' }} />
-          <div className="w-4 h-24 bg-emerald-600 border-2 border-emerald-800 rounded-t-full origin-bottom animate-sway" style={{ animationDelay: '2.4s' }} />
-        </div>
+        {/* Corner kelp removed: the previous cropped bars competed with the interface. */}
 
         {/* Cute Starfish & Clam on sand */}
         <div className="absolute bottom-2 left-1/3 opacity-90 hidden sm:block">
@@ -228,12 +223,7 @@ export const UnderwaterBackground: React.FC<UnderwaterBackgroundProps> = ({
           </svg>
         </div>
 
-        {/* Swaying Cartoon Sea Kelp Right */}
-        <div className="absolute bottom-4 right-8 flex items-end gap-2 opacity-85">
-          <div className="w-6 h-32 bg-lime-400 border-2 border-lime-600 rounded-t-full origin-bottom animate-sway" style={{ animationDelay: '1.8s' }} />
-          <div className="w-5 h-40 bg-emerald-500 border-2 border-emerald-700 rounded-t-full origin-bottom animate-sway" style={{ animationDelay: '0.6s' }} />
-          <div className="w-4 h-26 bg-teal-500 border-2 border-teal-700 rounded-t-full origin-bottom animate-sway" style={{ animationDelay: '2.8s' }} />
-        </div>
+        {/* Corner kelp removed for a cleaner, unobstructed frame. */}
       </div>
 
       {/* Main Content Area */}

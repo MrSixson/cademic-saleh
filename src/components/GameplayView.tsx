@@ -294,9 +294,9 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
   };
 
   return (
-    <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-3 flex flex-col justify-between z-20 select-none pb-8">
+    <div className="game-screen flex-1 w-full max-w-5xl mx-auto px-4 py-3 flex flex-col justify-between z-20 select-none pb-8">
       {/* Top HUD: Organic Driftwood Plank */}
-      <header className="flex items-center justify-between cartoon-wood-panel p-3 sm:p-4 shadow-2xl relative z-30">
+      <header className="game-topbar flex items-center justify-between cartoon-wood-panel p-3 sm:p-4 shadow-2xl relative z-30">
         {/* Corner Rivets */}
         <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-amber-950 border border-amber-600/80 shadow-inner" />
         <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-amber-950 border border-amber-600/80 shadow-inner" />
@@ -357,7 +357,7 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
       <ComboBanner combo={combo} />
 
       {/* Main Content Arena */}
-      <main className="flex-1 flex flex-col items-center justify-center my-4 w-full">
+      <main className="game-arena flex-1 flex flex-col items-center justify-center my-4 w-full">
         {/* 1. BRIEFING PHASE: Organic Marine Wooden Plaque */}
         {phase === 'briefing' && (
           <div className="w-full max-w-xl cartoon-wood-panel p-6 sm:p-8 shadow-2xl text-center animate-float-gentle border-4 border-amber-950">

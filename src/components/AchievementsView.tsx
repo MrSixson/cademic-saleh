@@ -47,7 +47,7 @@ export const AchievementsView: React.FC<AchievementsViewProps> = ({
   };
 
   return (
-    <div className="flex-1 w-full max-w-4xl mx-auto px-4 py-6 flex flex-col z-20 select-none pb-16">
+    <div className="dashboard-screen flex-1 w-full max-w-4xl mx-auto px-4 py-6 flex flex-col z-20 select-none pb-16">
       {/* Header: Organic Driftwood Plank */}
       <div className="flex items-center justify-between cartoon-wood-panel p-4 mb-6 shadow-2xl relative z-30">
         <div className="flex items-center gap-3">
