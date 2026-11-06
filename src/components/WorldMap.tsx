@@ -243,7 +243,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                         {level.id < 10 ? 'مقدمه‌ی سفر' : `پایه ${level.id < 50 ? 'دوم' : 'سوم'} • مراحل ${level.id} تا ${Math.min(level.id + 9, 100)}`}
                       </p>
                     </div>
-                    <span className="mr-auto rounded-full bg-amber-400/15 px-3 py-1 text-xs font-black text-amber-200">۱۰ مأموریت هیجان‌انگیز</span>
+                    <span className="mr-auto rounded-full bg-amber-400/15 px-3 py-1 text-xs font-black text-amber-200">{level.id < 10 ? '۹ مرحله‌ی شروع' : '۱۰ مأموریت هیجان‌انگیز'}</span>
                   </div>
                 )}
               <div
