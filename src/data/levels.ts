@@ -288,8 +288,19 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
   const chapter = CURRICULUM_CHAPTERS[chapterIndex];
   const grade = id < 50 ? 2 : 3;
   const isBoss = id % 10 === 0 || id === 100;
-  const mechanic = isBoss ? 'final_boss' : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
-  const mission = isBoss ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!' : CURRICULUM_MISSIONS[(id - 11) % CURRICULUM_MISSIONS.length];
+  // Stage 19 uses the spelling-choice mechanic: the child must identify the misspelled word.
+  // The old visual_difference setup relied on a fallback punctuation mark for many words,
+  // which did not create a meaningful Persian spelling error.
+  const mechanic = isBoss
+    ? 'final_boss'
+    : id === 19
+      ? 'spelling_choice'
+      : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
+  const mission = isBoss
+    ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!'
+    : id === 19
+      ? 'حبابِ واژه‌ای را که غلط املایی دارد پیدا کن و بترکان'
+      : CURRICULUM_MISSIONS[(id - 11) % CURRICULUM_MISSIONS.length];
   return {
     id,
     levelNumber: id,
@@ -310,7 +321,9 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
     instructionPersian: isBoss
       ? `وقت آزمون قهرمان‌هاست! ${chapter.focus} را به کار بگیر و به پادشاه این مرحله نشان بده چه بلدی!`
       : `ماموریت تو: ${mission}! با دقت بخوان، فکر کن و پاسخ درست را انتخاب کن.`,
-    educationalFocus: chapter.focus,
+    educationalFocus: id === 19
+      ? 'تشخیص واژه‌های دارای غلط املایی و مقایسه‌ی شکل درست و نادرست واژه‌ها'
+      : chapter.focus,
     zoneIndex: chapterIndex
   };
 });
