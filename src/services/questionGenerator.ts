@@ -429,7 +429,7 @@ export function generateQuestionForLevel(
 
   // 14. SIMILAR LETTERS DISCRIMINATION (ص/س، ت/ط، ق/غ، ح/ه، ث/س)
   if (mechanic === 'similar_letters_discrim') {
-    const challenge = SIMILAR_LETTER_CHALLENGES[(seed + roundNumber) % SIMILAR_LETTER_CHALLENGES.length];
+    const challenge = SIMILAR_LETTER_CHALLENGES[seed % SIMILAR_LETTER_CHALLENGES.length];
 
     return {
       roundNumber,
@@ -446,7 +446,7 @@ export function generateQuestionForLevel(
         isCorrect: opt === challenge.correctLetter,
         explanation: opt === challenge.correctLetter ? `آفرین! کلمه «${challenge.correctWord}» با حرف «${challenge.correctLetter}» نوشته می‌شود.` : undefined
       })),
-      promptText: `کلمه «${challenge.correctWord}» با کدام حرف کامل می‌شود؟`,
+      promptText: `جای خالی را با نشانه‌ی درست کامل کن: «${challenge.wordHole}»`,
       hint: 'شکل صحیح صدای هم‌نام را انتخاب کن.'
     };
   }
@@ -679,7 +679,7 @@ export function generateQuestionForLevel(
     mechanic: 'final_boss',
     targetWord: bossTarget,
     options: bossOptions,
-    promptText: `آزمون ${bossTitle}: شکل صحیح کلمه «${bossTarget.persianWord}» را انتخاب کن!`,
+    promptText: `آزمون ${bossTitle}: از میان گزینه‌ها، املای درست را پیدا کن!`,
     hint: 'با تمرکز و دقت بالا نشان بده که قهرمان زبان فارسی هستی!'
   };
 }

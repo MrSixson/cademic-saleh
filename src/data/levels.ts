@@ -289,11 +289,11 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
   const grade = id < 50 ? 2 : 3;
   const isBoss = id % 10 === 0 || id === 100;
   const mechanic = isBoss ? 'final_boss' : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
-  const mission = isBoss ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!' : CURRICULUM_MISSIONS[(id - 10) % CURRICULUM_MISSIONS.length];
+  const mission = isBoss ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!' : CURRICULUM_MISSIONS[(id - 11) % CURRICULUM_MISSIONS.length];
   return {
     id,
     levelNumber: id,
-    title: isBoss ? `مرحله ${id}: نبرد بزرگ ${chapter.title}` : `مرحله ${id}: ${CURRICULUM_MISSIONS[(id - 10) % CURRICULUM_MISSIONS.length]}`,
+    title: isBoss ? `مرحله ${id}: نبرد بزرگ ${chapter.title}` : `مرحله ${id}: ${mission}`,
     englishTitle: `Persian Adventure Level ${id}`,
     subtitle: `پایه ${grade === 2 ? 'دوم' : 'سوم'} • ${chapter.title}`,
     mechanic,
