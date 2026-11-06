@@ -46,6 +46,12 @@ export default function App() {
     savePlayerState(playerState);
   }, [playerState]);
 
+  // Apply persisted audio preferences on first render and whenever they change.
+  useEffect(() => {
+    audioService.updateSettings(playerState.settings);
+    if (!playerState.settings.musicEnabled) audioService.stopMusic();
+  }, [playerState.settings]);
+
   // Audio setup on user interaction
   const handleStartMusic = () => {
     if (playerState.settings.musicEnabled) {
@@ -193,11 +199,15 @@ export default function App() {
 
   // Claim achievement reward
   const handleClaimReward = (badgeId: string, rewardCoins: number) => {
-    setPlayerState(prev => ({
-      ...prev,
-      coins: prev.coins + rewardCoins,
-      unlockedBadges: [...prev.unlockedBadges, badgeId]
-    }));
+    setPlayerState(prev => {
+      if (prev.unlockedBadges.includes(badgeId)) return prev;
+      const safeReward = Number.isFinite(rewardCoins) ? Math.max(0, rewardCoins) : 0;
+      return {
+        ...prev,
+        coins: prev.coins + safeReward,
+        unlockedBadges: [...prev.unlockedBadges, badgeId]
+      };
+    });
   };
 
   // Select Companion
@@ -211,12 +221,16 @@ export default function App() {
 
   // Unlock Companion with coins
   const handleUnlockCharacter = (characterId: string, cost: number) => {
-    setPlayerState(prev => ({
-      ...prev,
-      coins: prev.coins - cost,
-      unlockedCharacters: [...prev.unlockedCharacters, characterId],
-      selectedCharacterId: characterId
-    }));
+    setPlayerState(prev => {
+      const safeCost = Number.isFinite(cost) ? Math.max(0, cost) : Number.POSITIVE_INFINITY;
+      if (prev.unlockedCharacters.includes(characterId) || prev.coins < safeCost) return prev;
+      return {
+        ...prev,
+        coins: prev.coins - safeCost,
+        unlockedCharacters: [...prev.unlockedCharacters, characterId],
+        selectedCharacterId: characterId
+      };
+    });
   };
 
   // Reset Progress
