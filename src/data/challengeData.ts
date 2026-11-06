@@ -90,7 +90,26 @@ export const SENTENCE_CHALLENGES = [
   { sentence: 'وقتی تشنه می‌شوم، ... می‌نوشم.', answer: 'آب', options: ['آب', 'کتاب', 'خاک', 'برگ'] },
   { sentence: 'در شب، ... در آسمان می‌درخشد.', answer: 'ستاره', options: ['ستاره', 'مداد', 'صندوق', 'مدرسه'] },
   { sentence: 'برای دوختن لباس از ... استفاده می‌کنند.', answer: 'سوزن', options: ['سوزن', 'قاشق', 'توپ', 'کتاب'] },
-  { sentence: 'فردوسی شاعر بزرگ زبان ... است.', answer: 'فارسی', options: ['فارسی', 'بارانی', 'مدادی', 'دریایی'] }
+  { sentence: 'فردوسی شاعر بزرگ زبان ... است.', answer: 'فارسی', options: ['فارسی', 'بارانی', 'مدادی', 'دریایی'] },
+
+  // افزودنی هفتگی ۱۴۰۵/۰۸/۱۵ — پایه دوم و سوم
+  {
+    sentence: 'ما برای دیدن جانوران به ... می‌رویم.',
+    answer: 'باغ‌وحش',
+    options: ['باغ‌وحش', 'نانوایی', 'کتابخانه', 'آشپزخانه'],
+    grade: 2,
+    skill: 'درک جمله و انتخاب واژه مناسب',
+    explanation: 'باغ‌وحش جایی برای دیدن جانوران است.'
+  },
+  {
+    sentence: 'واژه‌ی «پُرکار» برای کسی به کار می‌رود که ...',
+    answer: 'زیاد کار می‌کند',
+    options: ['زیاد کار می‌کند', 'زود می‌خوابد', 'کم حرف می‌زند', 'آهسته راه می‌رود'],
+    grade: 3,
+    skill: 'درک معنی واژه در بافت جمله',
+    explanation: 'پُرکار یعنی کسی که کار زیادی انجام می‌دهد.'
+  }
+
 ];
 
 export const MISSING_LETTER_CHALLENGES = [
@@ -113,7 +132,28 @@ export const MISSING_LETTER_CHALLENGES = [
   { word: 'ستاره', hole: '...تاره', correct: 'س', options: ['س', 'ص', 'ث', 'ش'] },
   { word: 'گندم', hole: '...ندم', correct: 'گ', options: ['گ', 'ک', 'ق', 'غ'] },
   { word: 'پروانه', hole: '...روانه', correct: 'پ', options: ['پ', 'ب', 'ت', 'ث'] },
-  { word: 'خورشید', hole: 'خور...ید', correct: 'ش', options: ['ش', 'س', 'ص', 'ث'] }
+  { word: 'خورشید', hole: 'خور...ید', correct: 'ش', options: ['ش', 'س', 'ص', 'ث'] },
+
+  // افزودنی هفتگی ۱۴۰۵/۰۸/۱۵ — پایه دوم و سوم
+  {
+    word: 'کتاب',
+    hole: 'ک...اب',
+    correct: 'ت',
+    options: ['ت', 'ط', 'د', 'ب'],
+    grade: 2,
+    skill: 'تکمیل واژه با نشانه درست',
+    explanation: 'کتاب با نشانه «ت» نوشته می‌شود.'
+  },
+  {
+    word: 'مزرعه',
+    hole: 'مزر...ه',
+    correct: 'ع',
+    options: ['ع', 'غ', 'ق', 'ح'],
+    grade: 3,
+    skill: 'تشخیص نشانه‌های هم‌آوا',
+    explanation: 'در واژه‌ی مزرعه، جای خالی با نشانه «ع» کامل می‌شود.'
+  }
+
 ];
 
 export const SIMILAR_LETTER_CHALLENGES = [
@@ -180,7 +220,28 @@ export const SYLLABLE_BURGER_WORDS = [
   { word: 'دانشمند', emoji: '🧑‍🔬', syllables: ['دا', 'نِش', 'مَند'] },
   { word: 'کتابخانه', emoji: '📚', syllables: ['کِ', 'تاب', 'خا', 'نه'] },
   { word: 'اقیانوس', emoji: '🌊', syllables: ['اُق', 'یا', 'نوس'] },
-  { word: 'آموزگار', emoji: '👩‍🏫', syllables: ['آ', 'موز', 'گار'] }
+  { word: 'آموزگار', emoji: '👩‍🏫', syllables: ['آ', 'موز', 'گار'] },
+
+  // افزودنی هفتگی ۱۴۰۵/۰۸/۱۵ — پایه دوم و سوم
+  {
+    word: 'گلابی',
+    emoji: '🍐',
+    syllables: ['گُ', 'لا', 'بی'],
+    grade: 2,
+    skill: 'بخش‌بندی و ساخت واژه',
+    answer: 'گُ + لا + بی',
+    explanation: 'گلابی سه بخش دارد: گُ، لا، بی.'
+  },
+  {
+    word: 'پرستار',
+    emoji: '🧑‍⚕️',
+    syllables: ['پَ', 'رِس', 'تار'],
+    grade: 3,
+    skill: 'بخش‌بندی واژه‌های سه‌بخشی',
+    answer: 'پَ + رِس + تار',
+    explanation: 'پرستار سه بخش دارد: پَ، رِس، تار.'
+  }
+
 ];
 
 export const JELLYFISH_ROUNDS = [
@@ -238,7 +299,40 @@ export const JELLYFISH_ROUNDS = [
       { id: 'j29', text: 'خروس', isTarget: false, color: 'from-amber-500 to-orange-600' },
       { id: 'j30', text: 'خندان', isTarget: false, color: 'from-emerald-500 to-teal-600' }
     ]
+  },
+
+  // افزودنی هفتگی ۱۴۰۵/۰۸/۱۵ — پایه دوم و سوم
+  {
+    prompt: 'واژه‌هایی را که نشانه «ش» دارند با تور شکار کن!',
+    items: [
+      { id: 'j31', text: 'شانه', isTarget: true, color: 'from-pink-500 to-rose-600' },
+      { id: 'j32', text: 'شکلات', isTarget: true, color: 'from-purple-500 to-pink-600' },
+      { id: 'j33', text: 'آشپز', isTarget: true, color: 'from-fuchsia-500 to-purple-600' },
+      { id: 'j34', text: 'پنجره', isTarget: false, color: 'from-cyan-500 to-blue-600' },
+      { id: 'j35', text: 'گلابی', isTarget: false, color: 'from-amber-500 to-orange-600' },
+      { id: 'j36', text: 'کتاب', isTarget: false, color: 'from-emerald-500 to-teal-600' }
+    ],
+    grade: 2,
+    skill: 'تشخیص دیداری نشانه «ش» در واژه‌ها',
+    answer: 'شانه، شکلات و آشپز',
+    explanation: 'در هر سه واژه، نشانه «ش» دیده می‌شود.'
+  },
+  {
+    prompt: 'واژه‌هایی را که با نشانه «خ» آغاز می‌شوند با تور بگیر!',
+    items: [
+      { id: 'j37', text: 'خیاط', isTarget: true, color: 'from-pink-500 to-purple-600' },
+      { id: 'j38', text: 'خنده', isTarget: true, color: 'from-fuchsia-500 to-pink-600' },
+      { id: 'j39', text: 'خاک', isTarget: true, color: 'from-rose-500 to-pink-600' },
+      { id: 'j40', text: 'باران', isTarget: false, color: 'from-cyan-500 to-sky-600' },
+      { id: 'j41', text: 'مداد', isTarget: false, color: 'from-amber-500 to-yellow-600' },
+      { id: 'j42', text: 'گلابی', isTarget: false, color: 'from-emerald-500 to-teal-600' }
+    ],
+    grade: 3,
+    skill: 'تشخیص نشانه آغازین واژه',
+    answer: 'خیاط، خنده و خاک',
+    explanation: 'هر سه واژه با حرف «خ» آغاز می‌شوند.'
   }
+
 ];
 
 export const KARATE_ROUNDS = [
@@ -350,7 +444,38 @@ export const RHYME_ROUNDS = [
       { id: 'r19', text: 'درخت', isRhyme: false, emoji: '🌳' },
       { id: 'r20', text: 'پلنگ', isRhyme: true, emoji: '🐆' }
     ]
+  },
+
+  // افزودنی هفتگی ۱۴۰۵/۰۸/۱۵ — پایه دوم و سوم
+  {
+    baseWord: 'ماه',
+    baseEmoji: '🌙',
+    options: [
+      { id: 'r21', text: 'راه', isRhyme: true, emoji: '🛣️' },
+      { id: 'r22', text: 'چاه', isRhyme: true, emoji: '🕳️' },
+      { id: 'r23', text: 'ابر', isRhyme: false, emoji: '☁️' },
+      { id: 'r24', text: 'مداد', isRhyme: false, emoji: '✏️' }
+    ],
+    grade: 2,
+    skill: 'شناخت قافیه و صدای پایانی',
+    answer: 'راه و چاه',
+    explanation: 'ماه، راه و چاه در پایان صدای «اه» دارند.'
+  },
+  {
+    baseWord: 'شیر',
+    baseEmoji: '🦁',
+    options: [
+      { id: 'r25', text: 'تیر', isRhyme: true, emoji: '🏹' },
+      { id: 'r26', text: 'سیر', isRhyme: true, emoji: '🧄' },
+      { id: 'r27', text: 'گل', isRhyme: false, emoji: '🌷' },
+      { id: 'r28', text: 'باران', isRhyme: false, emoji: '🌧️' }
+    ],
+    grade: 3,
+    skill: 'تشخیص واژه‌های هم‌قافیه',
+    answer: 'تیر و سیر',
+    explanation: 'شیر، تیر و سیر به صدای «یر» پایان می‌یابند.'
   }
+
 ];
 
 export const CASH_REGISTER_WORDS = [
