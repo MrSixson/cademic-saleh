@@ -61,6 +61,14 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
   const [mistakesCount, setMistakesCount] = useState<number>(0);
   const startTimeRef = useRef<number>(Date.now());
   const roundStartTimeRef = useRef<number>(Date.now());
+  const advanceTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => () => {
+    if (advanceTimeoutRef.current !== null) {
+      window.clearTimeout(advanceTimeoutRef.current);
+      advanceTimeoutRef.current = null;
+    }
+  }, []);
 
   // Player input for memory ordering
   const [selectedOrderIds, setSelectedOrderIds] = useState<string[]>([]);
@@ -165,7 +173,11 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
       } catch {}
 
       // Advance after short celebration
-      setTimeout(() => {
+      if (advanceTimeoutRef.current !== null) {
+        window.clearTimeout(advanceTimeoutRef.current);
+      }
+      advanceTimeoutRef.current = window.setTimeout(() => {
+        advanceTimeoutRef.current = null;
         if (currentRound >= level.roundsToComplete) {
           finishLevel(mistakesCount);
         } else {
