@@ -325,3 +325,135 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #7dd3fc;
 }
+
+/* --------------------------------------------------------------------------
+   2026 visual system: deep-ocean glass, calm contrast, accessible motion.
+   Existing game mechanics and component class names remain intact.
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --ocean-950: #061522;
+  --ocean-900: #0a2030;
+  --ocean-800: #103448;
+  --ocean-700: #15506a;
+  --aqua-500: #38c8c0;
+  --aqua-300: #8ce5dc;
+  --sand-100: #f4f0e6;
+  --sand-300: #d7cdb8;
+  --coral-400: #ff927e;
+  --glass-border: rgba(173, 225, 224, .2);
+  --glass-shadow: 0 22px 70px rgba(0, 8, 18, .38);
+}
+
+html { min-width: 320px; background: var(--ocean-950); }
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--ocean-950);
+  color: var(--sand-100);
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, [role="button"]:focus-visible, input:focus-visible {
+  outline: 3px solid var(--aqua-300);
+  outline-offset: 3px;
+}
+::selection { background: rgba(56, 200, 192, .32); color: #fff; }
+
+#root { min-height: 100vh; isolation: isolate; }
+#root > div { min-height: 100vh; }
+
+/* Replace the toy-like bevels with a cohesive, tactile glass-and-stone system. */
+.cartoon-wood-panel,
+.cartoon-sponge-panel,
+.cartoon-bubble-card,
+.marine-parchment,
+.stepping-stone-bubble {
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 22px !important;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+.cartoon-wood-panel {
+  background: linear-gradient(135deg, rgba(14, 48, 66, .96), rgba(7, 28, 43, .94)) !important;
+  color: var(--sand-100);
+}
+.cartoon-sponge-panel {
+  background: linear-gradient(145deg, rgba(31, 86, 91, .96), rgba(13, 48, 62, .96)) !important;
+}
+.cartoon-bubble-card,
+.stepping-stone-bubble {
+  background: linear-gradient(145deg, rgba(20, 65, 79, .94), rgba(8, 34, 50, .96)) !important;
+  color: var(--sand-100) !important;
+}
+.marine-parchment {
+  background: linear-gradient(145deg, rgba(245, 239, 221, .96), rgba(223, 215, 193, .96)) !important;
+  color: #18313b !important;
+}
+.marine-parchment,
+.marine-parchment * { color: #18313b; }
+
+.btn-spongebob-yellow,
+.btn-spongebob-blue,
+.btn-spongebob-green,
+.btn-spongebob-pink,
+.btn-marine-wood,
+.btn-bubble-option {
+  border: 1px solid rgba(184, 235, 230, .28) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 9px 24px rgba(0, 8, 18, .25) !important;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease !important;
+}
+.btn-spongebob-yellow {
+  background: linear-gradient(135deg, #f2c978, #dca84e) !important;
+  color: #1c2b2d !important;
+}
+.btn-spongebob-blue,
+.btn-bubble-option {
+  background: linear-gradient(135deg, #1a7180, #14536c) !important;
+  color: #f2fbf8 !important;
+}
+.btn-spongebob-green {
+  background: linear-gradient(135deg, #328c79, #1b665c) !important;
+  color: #f4fff9 !important;
+}
+.btn-spongebob-pink {
+  background: linear-gradient(135deg, #bd706d, #8e4e61) !important;
+  color: #fff7f3 !important;
+}
+.btn-marine-wood {
+  background: linear-gradient(135deg, #174b60, #0d3045) !important;
+  color: #e8f4ef !important;
+}
+.btn-spongebob-yellow:hover,
+.btn-spongebob-blue:hover,
+.btn-spongebob-green:hover,
+.btn-spongebob-pink:hover,
+.btn-marine-wood:hover,
+.btn-bubble-option:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.btn-spongebob-yellow:active,
+.btn-spongebob-blue:active,
+.btn-spongebob-green:active,
+.btn-spongebob-pink:active,
+.btn-marine-wood:active,
+.btn-bubble-option:active { transform: translateY(0) scale(.99); }
+
+.font-display { font-family: 'Lalezar', 'Vazirmatn', sans-serif; }
+.animate-sponge-glow, .animate-cartoon-bounce { animation-duration: 3.8s; }
+img { max-width: 100%; }
+@media (max-width: 640px) {
+  .cartoon-wood-panel, .cartoon-sponge-panel, .cartoon-bubble-card,
+  .marine-parchment, .stepping-stone-bubble { border-radius: 17px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
