@@ -116,6 +116,8 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
     setMistakesCount(0);
     startTimeRef.current = Date.now();
     loadRound(1);
+    // Keep stage 21 on its briefing screen until the child presses Start.
+    if (level.id === 21) setPhase('briefing');
   }, [level.id]);
 
   // Start Level from Briefing (if manually invoked)
