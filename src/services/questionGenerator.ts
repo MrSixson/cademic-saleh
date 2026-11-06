@@ -561,7 +561,7 @@ export function generateQuestionForLevel(
   // 20. LETTER CIRCLE BUILDER (Stage 23)
   if (mechanic === 'letter_circle_builder') {
     const wordsPerRound = [4, 6, 10][Math.max(0, Math.min(2, roundNumber - 1))];
-    const normalizeWord = (value: string) => value.replace(/[\\u200c\\s\\u0640\\u064b-\\u065f\\u0670]/g, '');
+    const normalizeWord = (value: string) => value.replace(/[\u200c\s\u0640\u064b-\u065f\u0670]/g, '');
     let candidates = eligibleWords.filter(word => {
       const letters = Array.from(normalizeWord(word.persianWord));
       return letters.length >= 2 && letters.length <= 8;
