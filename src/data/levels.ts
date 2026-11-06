@@ -250,9 +250,7 @@ const CURRICULUM_MECHANICS: LevelConfig['mechanic'][] = [
   'jellyfish_net_catch',
   'sandy_target_kick',
   'word_rhyme_bubble',
-  'krusty_cash_register',
-  'audio_dictation_listen',
-  'moving_bubbles'
+  'audio_dictation_listen'
 ];
 
 const CURRICULUM_COMPANIONS = ['spongebob', 'patrick', 'sandy', 'gary', 'mr_krabs', 'squidward'];
@@ -290,7 +288,7 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
   const chapter = CURRICULUM_CHAPTERS[chapterIndex];
   const grade = id < 50 ? 2 : 3;
   const isBoss = id % 10 === 0 || id === 100;
-  const mechanic = isBoss ? 'final_boss' : CURRICULUM_MECHANICS[(id - 10) % CURRICULUM_MECHANICS.length];
+  const mechanic = isBoss ? 'final_boss' : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
   const mission = isBoss ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!' : CURRICULUM_MISSIONS[(id - 10) % CURRICULUM_MISSIONS.length];
   return {
     id,
