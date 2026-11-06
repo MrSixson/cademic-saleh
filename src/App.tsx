@@ -141,7 +141,7 @@ export default function App() {
         ...prev,
         stars: prev.stars + starDiff,
         coins: prev.coins + coinsEarned,
-        currentLevel: Math.min(nextLevelNum, Math.max(GAME_LEVELS.length, 1)),
+        currentLevel: Math.min(nextLevelNum, Math.max(GAME_LEVELS[GAME_LEVELS.length - 1]?.id ?? 1, 1)),
         completedLevels: {
           ...prev.completedLevels,
           [activeLevel.id]: {
@@ -155,8 +155,9 @@ export default function App() {
       };
     });
 
-    // If final level (Level 6) was completed -> Show victory celebration!
-    if (activeLevel.id === GAME_LEVELS[GAME_LEVELS.length - 1].id) {
+    // Celebrate only after the last configured level has been completed.
+    const finalLevel = GAME_LEVELS[GAME_LEVELS.length - 1];
+    if (finalLevel && activeLevel.id === finalLevel.id) {
       setCurrentScreen('finalCelebration');
     } else {
       setCompletedLevelData({
