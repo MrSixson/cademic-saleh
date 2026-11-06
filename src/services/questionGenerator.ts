@@ -539,6 +539,7 @@ export function generateQuestionForLevel(
         text: w.persianWord,
         isCorrect: w.id === target.id
       })),
+      timeLimitSeconds: level.id === 21 ? 6 : undefined,
       promptText: `سریع حباب کلمه «${target.persianWord}» را شکار کن!`,
       hint: 'با سرعت کلمه هدف را بزن!'
     };
@@ -660,6 +661,49 @@ export function generateQuestionForLevel(
       dictationSetup: pickedDict,
       promptText: `گوش کن و املای صحیح «${pickedDict.word}» را انتخاب کن!`,
       hint: 'به صدای گوینده و نشانه‌های کلمه دقت کن.'
+    };
+  }
+
+  // Stage 20 spelling boss: four unrelated vocabulary items, exactly one correctly spelled.
+  if (level.id === 20) {
+    const pool = wordsWithMistakes;
+    const chosen: { word: WordItem; wrongText: string }[] = [];
+    const usedTexts = new Set<string>();
+    const start = (seed + roundNumber * 7) % pool.length;
+
+    for (let offset = 0; offset < pool.length && chosen.length < 4; offset++) {
+      const word = pool[(start + offset) % pool.length];
+      if (chosen.some(item => item.word.id === word.id)) continue;
+      const variants = word.incorrectVariants || [];
+      const wrongText = variants[(roundNumber + offset) % variants.length];
+      if (!wrongText || usedTexts.has(word.persianWord) || usedTexts.has(wrongText)) continue;
+      if (chosen.some(item => item.word.persianWord === wrongText)) continue;
+      chosen.push({ word, wrongText });
+      usedTexts.add(word.persianWord);
+      usedTexts.add(wrongText);
+    }
+
+    const correctIndex = (seed + roundNumber) % 4;
+    const options = chosen.map((item, index) => {
+      const isCorrect = index === correctIndex;
+      return {
+        id: `stage20_${roundNumber}_${item.word.id}`,
+        text: isCorrect ? item.word.persianWord : item.wrongText,
+        isCorrect,
+        explanation: isCorrect
+          ? `آفرین! «${item.word.persianWord}» درست نوشته شده است.`
+          : `این واژه غلط املایی دارد؛ شکل درست آن «${item.word.persianWord}» است.`
+      };
+    }).sort(() => 0.5 - Math.random());
+
+    return {
+      roundNumber,
+      totalRounds,
+      mechanic: 'final_boss',
+      targetWord: chosen[correctIndex]?.word || WORD_DATABASE[0],
+      options,
+      promptText: 'از میان چهار واژه‌ی متفاوت، فقط واژه‌ای را انتخاب کن که املای درست دارد!',
+      hint: 'سه واژه غلط املایی دارند و فقط یکی درست است؛ به شکل نوشتاری هر واژه دقت کن.'
     };
   }
 
