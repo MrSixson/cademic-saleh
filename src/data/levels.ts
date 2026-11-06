@@ -291,16 +291,22 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
   // Stage 19 uses the spelling-choice mechanic: the child must identify the misspelled word.
   // The old visual_difference setup relied on a fallback punctuation mark for many words,
   // which did not create a meaningful Persian spelling error.
-  const mechanic = isBoss
-    ? 'final_boss'
-    : id === 19
-      ? 'spelling_choice'
-      : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
-  const mission = isBoss
-    ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!'
-    : id === 19
-      ? 'حبابِ واژه‌ای را که غلط املایی دارد پیدا کن و بترکان'
-      : CURRICULUM_MISSIONS[(id - 11) % CURRICULUM_MISSIONS.length];
+  // Stage 20 remains a boss round, but uses visible scrambled letters so the
+  // learner can actually build the target word instead of guessing from options.
+  const mechanic = id === 20
+    ? 'scrambled_letters_word'
+    : isBoss
+      ? 'final_boss'
+      : id === 19
+        ? 'spelling_choice'
+        : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
+  const mission = id === 20
+    ? 'حروف به‌هم‌ریخته را کنار هم بچین و واژه‌ی درست را بساز'
+    : isBoss
+      ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!'
+      : id === 19
+        ? 'حبابِ واژه‌ای را که غلط املایی دارد پیدا کن و بترکان'
+        : CURRICULUM_MISSIONS[(id - 11) % CURRICULUM_MISSIONS.length];
   return {
     id,
     levelNumber: id,
@@ -318,12 +324,16 @@ const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => 
     roundsToComplete: isBoss ? 4 : 3,
     companionCharacterId: CURRICULUM_COMPANIONS[index % CURRICULUM_COMPANIONS.length],
     descriptionPersian: `ماجراجوی پایه ${grade === 2 ? 'دوم' : 'سوم'}! در ${chapter.title} باید ${mission}؛ هر پاسخ درست تو را به گنج بعدی نزدیک‌تر می‌کند.`,
-    instructionPersian: isBoss
-      ? `وقت آزمون قهرمان‌هاست! ${chapter.focus} را به کار بگیر و به پادشاه این مرحله نشان بده چه بلدی!`
-      : `ماموریت تو: ${mission}! با دقت بخوان، فکر کن و پاسخ درست را انتخاب کن.`,
-    educationalFocus: id === 19
-      ? 'تشخیص واژه‌های دارای غلط املایی و مقایسه‌ی شکل درست و نادرست واژه‌ها'
-      : chapter.focus,
+    instructionPersian: id === 20
+      ? `حروف طلایی را نگاه کن، آن‌ها را به ترتیب درست کنار هم بگذار و واژه را از میان گزینه‌ها انتخاب کن!`
+      : isBoss
+        ? `وقت آزمون قهرمان‌هاست! ${chapter.focus} را به کار بگیر و به پادشاه این مرحله نشان بده چه بلدی!`
+        : `ماموریت تو: ${mission}! با دقت بخوان، فکر کن و پاسخ درست را انتخاب کن.`,
+    educationalFocus: id === 20
+      ? 'شناخت شکل حروف، مرتب‌سازی حروف به‌هم‌ریخته و ساخت واژه‌ی فارسی'
+      : id === 19
+        ? 'تشخیص واژه‌های دارای غلط املایی و مقایسه‌ی شکل درست و نادرست واژه‌ها'
+        : chapter.focus,
     zoneIndex: chapterIndex
   };
 });
