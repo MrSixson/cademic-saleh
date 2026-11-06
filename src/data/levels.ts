@@ -70,7 +70,7 @@ export const IMAGE_QUIZ_DATA: Record<number, ImageQuizLevelData> = {
   }
 };
 
-export const GAME_LEVELS: LevelConfig[] = [
+const INTRO_LEVELS: LevelConfig[] = [
   {
     id: 1,
     levelNumber: 1,
@@ -216,7 +216,106 @@ export const GAME_LEVELS: LevelConfig[] = [
     instructionPersian: 'کلمه را بخوان، بخش‌هایش را بشمار و گزینه درست (۱، ۲، ۳ یا ۴) را انتخاب کن!',
     educationalFocus: 'تقویت مهارت تفکیک هجاها و بخش‌بندی کلمات فارسی پایه اول و دوم دبستان'
   }
+
 ];
+
+const CURRICULUM_CHAPTERS = [
+  { title: 'جنگل واژه‌ها', focus: 'خواندن و نوشتن واژه‌های ساده، واژه‌های هم‌خانواده و نشانه‌های آشنا', environment: 'pineapple_home' as const },
+  { title: 'جزیره نشانه‌ها', focus: 'تشخیص نشانه‌های هم‌صدا و انتخاب املای درست واژه‌ها', environment: 'jellyfish_fields' as const },
+  { title: 'شهر جمله‌ها', focus: 'کامل‌کردن جمله، درک معنی واژه و کاربرد آن در جمله', environment: 'krusty_krab' as const },
+  { title: 'کارگاه کلمه‌سازی', focus: 'ساخت واژه از حروف و بخش‌ها و تقویت دقت دیداری', environment: 'sandy_dome' as const },
+  { title: 'دره درک مطلب', focus: 'خواندن دقیق، فهم واژه‌ها و پیدا کردن پاسخ مناسب', environment: 'gary_library' as const },
+  { title: 'جزیره هم‌قافیه‌ها', focus: 'شناخت آهنگ واژه‌ها، بخش‌بندی و صداهای پایانی', environment: 'jellyfish_fields' as const },
+  { title: 'آزمایشگاه دقت', focus: 'تقویت حافظه دیداری، ترتیب واژه‌ها و تشخیص تفاوت‌ها', environment: 'sandy_dome' as const },
+  { title: 'بندر دیکته', focus: 'گوش‌دادن، درست‌نویسی و اصلاح اشتباه‌های رایج', environment: 'krusty_krab' as const },
+  { title: 'قلعه فارسی', focus: 'ترکیب مهارت‌های املا، واژه‌سازی و جمله‌خوانی', environment: 'neptune_palace' as const },
+  { title: 'قصر قهرمانان فارسی', focus: 'مرور مهارت‌های پایه دوم و سوم در آزمون بزرگ پایانی', environment: 'neptune_palace' as const }
+];
+
+const CURRICULUM_MECHANICS: LevelConfig['mechanic'][] = [
+  'spelling_choice',
+  'missing_letter',
+  'similar_letters_discrim',
+  'scrambled_letters_word',
+  'sentence_completion',
+  'visual_memory_order',
+  'find_new_word',
+  'find_missing_word',
+  'visual_difference',
+  'flash_memory',
+  'speed_hunt',
+  'combination_challenge',
+  'treasure_words',
+  'krabby_burger_builder',
+  'jellyfish_net_catch',
+  'sandy_target_kick',
+  'word_rhyme_bubble',
+  'audio_dictation_listen'
+];
+
+const CURRICULUM_COMPANIONS = ['spongebob', 'patrick', 'sandy', 'gary', 'mr_krabs', 'squidward'];
+const CURRICULUM_BOSSES: NonNullable<LevelConfig['bossCharacter']>[] = [
+  'king_neptune_boss', 'plankton_boss', 'jelly_king', 'shark_boss', 'squidward_boss',
+  'gary_boss', 'crystal_golem', 'guardian_whale', 'pirate_captain', 'king_neptune_boss'
+];
+
+const CURRICULUM_MISSIONS = [
+  'گنج واژه‌های درست را پیدا کن',
+  'حرف گمشده را به خانه‌اش برگردان',
+  'نشانه‌ی درست را از میان رقیب‌ها انتخاب کن',
+  'حروف به‌هم‌ریخته را به یک واژه‌ی قشنگ تبدیل کن',
+  'جمله‌ی ناقص را کامل کن',
+  'ترتیب واژه‌ها را مثل یک قهرمان به خاطر بسپار',
+  'واژه‌ی تازه‌وارد را پیدا کن',
+  'جای خالی واژه‌ی ناپدیدشده را کشف کن',
+  'کلمه‌ی متفاوت را با چشم تیزبین پیدا کن',
+  'واژه‌ی درخشان را به خاطر بسپار',
+  'پیش از تمام شدن زمان، واژه‌ی هدف را شکار کن',
+  'از چند چالش فارسی با موفقیت عبور کن',
+  'صندوقچه‌ی واژه‌های ارزشمند را باز کن',
+  'بخش‌های کلمه را مثل یک برگر خوشمزه کنار هم بچین',
+  'عروس‌های دریاییِ واژه‌ها را با تور بگیر',
+  'تخته‌ی دارای غلط املایی را بشکن',
+  'حباب‌های هم‌آهنگ و هم‌قافیه را پیدا کن',
+  'بخش‌ها و صداهای واژه را بشمار',
+  'به دیکته گوش کن و شکل درست را انتخاب کن',
+  'حباب اشتباه را پیش از فرار بترکان'
+];
+
+const EXTENDED_LEVELS: LevelConfig[] = Array.from({ length: 91 }, (_, index) => {
+  const id = index + 10;
+  const chapterIndex = Math.min(9, Math.floor((id - 10) / 10));
+  const chapter = CURRICULUM_CHAPTERS[chapterIndex];
+  const grade = id < 50 ? 2 : 3;
+  const isBoss = id % 10 === 0 || id === 100;
+  const mechanic = isBoss ? 'final_boss' : CURRICULUM_MECHANICS[(id - 11) % CURRICULUM_MECHANICS.length];
+  const mission = isBoss ? 'آزمون بزرگ این سرزمین را پشت سر بگذار و نشان قهرمان فارسی را بگیر!' : CURRICULUM_MISSIONS[(id - 10) % CURRICULUM_MISSIONS.length];
+  return {
+    id,
+    levelNumber: id,
+    title: isBoss ? `مرحله ${id}: نبرد بزرگ ${chapter.title}` : `مرحله ${id}: ${CURRICULUM_MISSIONS[(id - 10) % CURRICULUM_MISSIONS.length]}`,
+    englishTitle: `Persian Adventure Level ${id}`,
+    subtitle: `پایه ${grade === 2 ? 'دوم' : 'سوم'} • ${chapter.title}`,
+    mechanic,
+    environment: chapter.environment,
+    isBoss,
+    ...(isBoss ? {
+      bossCharacter: CURRICULUM_BOSSES[chapterIndex],
+      bossNamePersian: ['فرمانروای واژه‌ها', 'پلانکتون بداملاء', 'پادشاه جمله‌ها', 'غول حروف گمشده', 'نگهبان درک مطلب', 'شاه قافیه‌ها', 'ربات حافظه', 'ناخدای دیکته', 'اژدهای غلط‌های املایی', 'پادشاه بزرگ فارسی'][chapterIndex]
+    } : {}),
+    observationTimeSeconds: mechanic === 'visual_memory_order' || mechanic === 'find_new_word' || mechanic === 'find_missing_word' ? (grade === 2 ? 4 : 3) : 0,
+    roundsToComplete: isBoss ? 4 : 3,
+    companionCharacterId: CURRICULUM_COMPANIONS[index % CURRICULUM_COMPANIONS.length],
+    descriptionPersian: `ماجراجوی پایه ${grade === 2 ? 'دوم' : 'سوم'}! در ${chapter.title} باید ${mission}؛ هر پاسخ درست تو را به گنج بعدی نزدیک‌تر می‌کند.`,
+    instructionPersian: isBoss
+      ? `وقت آزمون قهرمان‌هاست! ${chapter.focus} را به کار بگیر و به پادشاه این مرحله نشان بده چه بلدی!`
+      : `ماموریت تو: ${mission}! با دقت بخوان، فکر کن و پاسخ درست را انتخاب کن.`,
+    educationalFocus: chapter.focus,
+    zoneIndex: chapterIndex
+  };
+});
+
+export const GAME_LEVELS: LevelConfig[] = [...INTRO_LEVELS, ...EXTENDED_LEVELS];
 
 export const getLevelById = (id: number): LevelConfig | undefined => {
   return GAME_LEVELS.find(l => l.id === id);

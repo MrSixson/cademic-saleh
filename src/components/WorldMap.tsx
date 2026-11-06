@@ -47,6 +47,11 @@ export const WorldMap: React.FC<WorldMapProps> = ({
   onOpenCharacterSelect
 }) => {
   const currentCompanion = getCharacterById(playerState.selectedCharacterId);
+  const chapterNames = [
+    'جنگل واژه‌ها', 'جزیره نشانه‌ها', 'شهر جمله‌ها', 'کارگاه کلمه‌سازی',
+    'دره درک مطلب', 'جزیره هم‌قافیه‌ها', 'آزمایشگاه دقت', 'بندر دیکته',
+    'قلعه فارسی', 'قصر قهرمانان فارسی'
+  ];
 
   const handleNodeClick = (level: LevelConfig) => {
     const isUnlocked = level.id <= playerState.currentLevel || playerState.completedLevels[level.id] !== undefined;
@@ -223,9 +228,25 @@ export const WorldMap: React.FC<WorldMapProps> = ({
             const starsCount = result?.stars || 0;
             const bgImg = getLevelImage(level.environment);
 
+            const startsChapter = level.id === 1 || (level.id >= 10 && (level.id - 10) % 10 === 0);
+            const chapterIndex = Math.min(9, Math.floor((level.id - 10) / 10));
+            const chapterTitle = level.id < 10 ? 'آماده‌سازی و آشنایی با دنیای کلمات' : chapterNames[chapterIndex];
+
             return (
+              <React.Fragment key={level.id}>
+                {startsChapter && (
+                  <div className="col-span-full mt-3 mb-1 flex items-center gap-3 rounded-2xl border border-cyan-200/40 bg-slate-950/75 px-4 py-3 shadow-lg backdrop-blur-md">
+                    <span className="text-2xl">{level.id < 10 ? '🐚' : level.isBoss ? '👑' : '🗺️'}</span>
+                    <div className="min-w-0">
+                      <h2 className="text-base sm:text-lg font-black text-amber-200">{chapterTitle}</h2>
+                      <p className="text-xs sm:text-sm font-bold text-cyan-100">
+                        {level.id < 10 ? 'مقدمه‌ی سفر' : `پایه ${level.id < 50 ? 'دوم' : 'سوم'} • مراحل ${level.id} تا ${Math.min(level.id + 9, 100)}`}
+                      </p>
+                    </div>
+                    <span className="mr-auto rounded-full bg-amber-400/15 px-3 py-1 text-xs font-black text-amber-200">{level.id < 10 ? '۹ مرحله‌ی شروع' : '۱۰ مأموریت هیجان‌انگیز'}</span>
+                  </div>
+                )}
               <div
-                key={level.id}
                 onClick={() => handleNodeClick(level)}
                 className={`map-level-card p-4 sm:p-5 relative overflow-hidden transition-all duration-300 cursor-pointer select-none flex flex-col justify-between min-h-[165px] ${
                   isCurrent
@@ -347,6 +368,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                   </div>
                 </div>
               </div>
+              </React.Fragment>
             );
           })}
         </div>

@@ -93,10 +93,10 @@ export function generateQuestionForLevel(
   }
 
   // Filter words by difficulty according to level tier
-  let targetDifficulty = 1;
-  if (level.id > 20 && level.id <= 50) targetDifficulty = 2;
-  else if (level.id > 50 && level.id <= 80) targetDifficulty = 3;
-  else if (level.id > 80) targetDifficulty = 4;
+  // Curriculum is intentionally aligned to elementary Persian (grades 2 and 3).
+  // Grade 2 uses familiar words (difficulty 1-2); grade 3 gradually adds
+  // richer vocabulary (difficulty 1-3), without jumping to adult-level items.
+  const targetDifficulty = level.id < 50 ? 1 : 2;
 
   let eligibleWords = WORD_DATABASE.filter(w => Math.abs(w.difficulty - targetDifficulty) <= 1);
   if (eligibleWords.length < 8) {
