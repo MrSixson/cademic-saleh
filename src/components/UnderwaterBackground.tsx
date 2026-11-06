@@ -102,6 +102,11 @@ export const UnderwaterBackground: React.FC<UnderwaterBackgroundProps> = ({
         <img
           src={themeImage}
           alt="Bikini Bottom Scene"
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full object-cover object-center filter brightness-90 contrast-105 transition-opacity duration-1000"
           referrerPolicy="no-referrer"
         />
