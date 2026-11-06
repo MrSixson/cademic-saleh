@@ -50,6 +50,7 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
   // Phases: 'briefing' | 'observing' | 'answering' | 'feedback' | 'completed'
   const [phase, setPhase] = useState<'briefing' | 'observing' | 'answering' | 'feedback'>('briefing');
   const [observationTimer, setObservationTimer] = useState<number>(level.observationTimeSeconds);
+  const [huntTimer, setHuntTimer] = useState<number>(6);
 
   // Companion interactive state
   const [companionMood, setCompanionMood] = useState<CharacterMood>('idle');
@@ -83,6 +84,7 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
     setSelectedOrderIds([]);
     setSelectedOptionId(null);
     setIsAnswerCorrect(null);
+    setHuntTimer(6);
     roundStartTimeRef.current = Date.now();
 
     // Check if round needs observation phase
@@ -114,6 +116,8 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
     setMistakesCount(0);
     startTimeRef.current = Date.now();
     loadRound(1);
+    // Keep stage 21 on its briefing screen until the child presses Start.
+    if (level.id === 21) setPhase('briefing');
   }, [level.id]);
 
   // Start Level from Briefing (if manually invoked)
@@ -199,11 +203,25 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
       setTimeout(() => {
         setSelectedOptionId(null);
         setIsAnswerCorrect(null);
+        setHuntTimer(6);
         setPhase('answering');
         setCompanionMood('idle');
       }, 1400);
     }
   };
+
+  // Stage 21 speed-hunt countdown: every round has exactly six seconds.
+  useEffect(() => {
+    if (level.id !== 21 || phase !== 'answering' || !questionData) return;
+
+    if (huntTimer <= 0) {
+      handleOptionClick('time_expired', false, questionData.targetWord?.persianWord || 'زمان تمام شد');
+      return;
+    }
+
+    const timer = window.setTimeout(() => setHuntTimer(prev => prev - 1), 1000);
+    return () => window.clearTimeout(timer);
+  }, [level.id, phase, huntTimer, questionData]);
 
   // Handle visual memory sequence selection (Level 1 & 2)
   const handleSequenceCardClick = (wordId: string) => {
@@ -382,7 +400,7 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
               className="w-full py-4 btn-spongebob-yellow font-black text-xl flex items-center justify-center gap-2 cursor-pointer"
             >
               <Sparkles className="w-6 h-6 text-amber-800" />
-              <span>آماده‌ام! شروع کنیم</span>
+              <span>{level.id === 21 ? 'شروع شکار کلمه' : 'آماده‌ام! شروع کنیم'}</span>
             </button>
           </div>
         )}
@@ -430,6 +448,12 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
         {/* 3. ANSWERING & FEEDBACK PHASE */}
         {(phase === 'answering' || phase === 'feedback') && questionData && (
           <div className="w-full max-w-3xl flex flex-col items-center">
+            {level.id === 21 && phase === 'answering' && (
+              <div className="marine-parchment px-5 py-2 mb-4 text-amber-950 font-black text-lg flex items-center gap-2 shadow-md">
+                <span>⏱️</span>
+                <span>زمان شکار: {huntTimer} ثانیه</span>
+              </div>
+            )}
             {/* Prompt Banner: Organic Marine Parchment Scroll */}
             {level.mechanic !== 'twenty_bubble_spelling' && level.mechanic !== 'basketball_trash_sort' && level.mechanic !== 'syllable_count_quiz' && (
               <div className="marine-parchment px-6 py-3.5 shadow-xl mb-6 text-center">
