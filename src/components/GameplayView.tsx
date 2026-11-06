@@ -11,6 +11,7 @@ import { TwentyBubbleDetective } from './TwentyBubbleDetective';
 import { BasketballTrashSorter } from './BasketballTrashSorter';
 import { SyllableQuizView } from './SyllableQuizView';
 import { KrabbyBurgerBuilder } from './KrabbyBurgerBuilder';
+import { LetterCircleBuilder } from './LetterCircleBuilder';
 import { JellyfishNetCatch } from './JellyfishNetCatch';
 import { SandyKarateBreak } from './SandyKarateBreak';
 import { WordRhymeBubble } from './WordRhymeBubble';
@@ -547,9 +548,33 @@ export const GameplayView: React.FC<GameplayViewProps> = ({
               />
             )}
 
+            {/* STAGE 23. LETTER CIRCLE BUILDER */}
+            {level.mechanic === 'letter_circle_builder' && questionData.letterCircleSetup && (
+              <LetterCircleBuilder
+                items={questionData.letterCircleSetup.items}
+                onSuccess={() => {
+                  const newCombo = combo + 1;
+                  setCombo(newCombo);
+                  setScore(prev => prev + 150 * newCombo);
+                  onRecordAnswer(`stage23_round_${currentRound}`, true, Date.now() - roundStartTimeRef.current, 'letter_circle_builder');
+                  setCompanionMood('celebration');
+                  setCompanionSpeech('آفرین قهرمان! همه‌ی کلمه‌های این راند را ساختی! 🌟');
+                  handleNextRound();
+                }}
+                onMistake={(word) => {
+                  setCombo(0);
+                  setMistakesCount(prev => prev + 1);
+                  onRecordAnswer(word, false, 800, 'letter_circle_builder');
+                  setCompanionMood('funny_fail');
+                  setCompanionSpeech(`برای ساخت «${word}» ترتیب حروف را دوباره بررسی کن!`);
+                }}
+              />
+            )}
+
             {/* 1. KRABBY BURGER BUILDER (Syllable Assembly) */}
             {level.mechanic === 'krabby_burger_builder' && questionData.burgerSyllablesSetup && (
               <KrabbyBurgerBuilder
+                key={`${level.id}-${currentRound}`}
                 targetWord={questionData.burgerSyllablesSetup.targetWord}
                 targetEmoji={questionData.burgerSyllablesSetup.targetEmoji}
                 syllables={questionData.burgerSyllablesSetup.syllables}
