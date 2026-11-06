@@ -1,0 +1,6 @@
+{
+  "name": "دریای کلمات",
+  "description": "بازی ماجراجویی آموزشی زیر آب برای تقویت خواندن، املا، تمایز حروف و حافظه دیداری کودکان پایه اول و ورود به دوم ابتدایی",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

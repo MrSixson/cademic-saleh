@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Lalezar', cursive, system-ui, sans-serif;
+  }
+}
+
+/* SpongeBob & Cartoon Underwater animations */
+@keyframes flowerFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) rotate(15deg) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, -40px) rotate(-10deg) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes jellyWobble {
+  0%, 100% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.08, 0.92) rotate(-3deg);
+  }
+  50% {
+    transform: scale(0.94, 1.06) rotate(2deg);
+  }
+  75% {
+    transform: scale(1.04, 0.96) rotate(-1deg);
+  }
+}
+
+@keyframes cartoonBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.06);
+  }
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(110vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-20vh) translateX(40px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+@keyframes swayKelp {
+  0%, 100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes spongeGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.7));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(250, 204, 21, 1));
+  }
+}
+
+.animate-flower-float {
+  animation: flowerFloat 14s ease-in-out infinite;
+}
+
+.animate-jelly-wobble {
+  animation: jellyWobble 2.5s ease-in-out infinite;
+}
+
+.animate-cartoon-bounce {
+  animation: cartoonBounce 2.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 3.5s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 2.8s ease-in-out infinite;
+}
+
+.animate-sway {
+  transform-origin: bottom center;
+  animation: swayKelp 4.5s ease-in-out infinite;
+}
+
+.animate-sponge-glow {
+  animation: spongeGlow 2s ease-in-out infinite;
+}
+
+/* SpongeBob cartoon 3D button utility */
+.btn-spongebob-yellow {
+  background: linear-gradient(180deg, #fef08a 0%, #facc15 50%, #eab308 100%);
+  border: 3.5px solid #713f12;
+  box-shadow: 0 6px 0 #713f12, 0 10px 15px rgba(0,0,0,0.3);
+  color: #422006;
+  border-radius: 1.5rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-spongebob-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #713f12, 0 14px 20px rgba(0,0,0,0.35);
+}
+
+.btn-spongebob-yellow:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #713f12, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-spongebob-blue {
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 50%, #0369a1 100%);
+  border: 3.5px solid #082f49;
+  box-shadow: 0 6px 0 #082f49, 0 10px 15px rgba(0,0,0,0.3);
+  color: #ffffff;
+  border-radius: 1.5rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-spongebob-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #082f49, 0 14px 20px rgba(0,0,0,0.35);
+}
+
+.btn-spongebob-blue:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #082f49, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-spongebob-green {
+  background: linear-gradient(180deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  border: 3.5px solid #14532d;
+  box-shadow: 0 6px 0 #14532d, 0 10px 15px rgba(0,0,0,0.3);
+  color: #052e16;
+  border-radius: 1.5rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-spongebob-green:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #14532d, 0 14px 20px rgba(0,0,0,0.35);
+}
+
+.btn-spongebob-green:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #14532d, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-spongebob-pink {
+  background: linear-gradient(180deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+  border: 3.5px solid #701a75;
+  box-shadow: 0 6px 0 #701a75, 0 10px 15px rgba(0,0,0,0.3);
+  color: #ffffff;
+  border-radius: 1.5rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-spongebob-pink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #701a75, 0 14px 20px rgba(0,0,0,0.35);
+}
+
+.btn-spongebob-pink:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #701a75, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Cartoon Wooden Planks / Organic Signboards */
+.cartoon-wood-panel {
+  background: linear-gradient(180deg, #9a3412 0%, #7c2d12 45%, #451a03 100%);
+  border: 4px solid #292524;
+  box-shadow: 0 8px 0 #1c1917, inset 0 3px 6px rgba(254, 215, 170, 0.35), 0 16px 28px rgba(0,0,0,0.45);
+  border-radius: 2rem 2.25rem 1.85rem 2.15rem;
+  position: relative;
+}
+
+.cartoon-sponge-panel {
+  background: linear-gradient(180deg, #fef08a 0%, #fde047 60%, #eab308 100%);
+  border: 4px solid #713f12;
+  box-shadow: 0 8px 0 #713f12, inset 0 4px 8px rgba(255,255,255,0.7), 0 14px 24px rgba(0,0,0,0.3);
+  border-radius: 2.25rem 2rem 2.5rem 1.75rem;
+}
+
+.cartoon-bubble-card {
+  background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.95) 0%, rgba(224,242,254,0.92) 55%, rgba(186,230,253,0.88) 100%);
+  border: 3.5px solid #0284c7;
+  box-shadow: 0 6px 0 #0369a1, inset 0 6px 12px rgba(255,255,255,0.9), 0 12px 24px rgba(2,132,199,0.25);
+  border-radius: 2rem 1.75rem 2.25rem 1.9rem;
+}
+
+/* Organic Marine Parchment Scroll for Prompts and Questions */
+.marine-parchment {
+  background: linear-gradient(180deg, #fef9c3 0%, #fef08a 40%, #fde68a 100%);
+  border: 4px solid #b45309;
+  box-shadow: 0 7px 0 #78350f, inset 0 3px 8px rgba(255,255,255,0.8), 0 14px 26px rgba(0,0,0,0.35);
+  border-radius: 2.5rem 1.75rem 2.25rem 2rem;
+  color: #451a03;
+}
+
+/* Organic Nautical Wood Plank Buttons */
+.btn-marine-wood {
+  background: linear-gradient(180deg, #b45309 0%, #9a3412 50%, #7c2d12 100%);
+  border: 3.5px solid #292524;
+  box-shadow: 0 6px 0 #1c1917, inset 0 2px 4px rgba(254, 215, 170, 0.4), 0 10px 16px rgba(0,0,0,0.3);
+  color: #fffbeb;
+  border-radius: 1.75rem 1.5rem 1.85rem 1.6rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-marine-wood:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #1c1917, inset 0 2px 6px rgba(254, 215, 170, 0.6), 0 14px 20px rgba(0,0,0,0.35);
+  background: linear-gradient(180deg, #d97706 0%, #b45309 50%, #9a3412 100%);
+}
+
+.btn-marine-wood:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #1c1917, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Organic Bubble Answer Options */
+.btn-bubble-option {
+  background: radial-gradient(circle at 35% 25%, #ffffff 0%, #e0f2fe 45%, #bae6fd 100%);
+  border: 3.5px solid #0284c7;
+  box-shadow: 0 6px 0 #0369a1, inset 0 4px 8px rgba(255,255,255,0.9), 0 10px 18px rgba(2,132,199,0.25);
+  color: #0c4a6e;
+  border-radius: 2rem 1.75rem 2.25rem 1.85rem;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-bubble-option:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 0 #0369a1, inset 0 5px 10px rgba(255,255,255,1), 0 14px 24px rgba(2,132,199,0.35);
+  background: radial-gradient(circle at 30% 20%, #ffffff 0%, #f0f9ff 45%, #7dd3fc 100%);
+}
+
+.btn-bubble-option:active {
+  transform: translateY(4px) scale(0.98);
+  box-shadow: 0 2px 0 #0369a1, 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Organic Floating Stepping Stone for World Map */
+.stepping-stone-bubble {
+  background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.95) 0%, rgba(224,242,254,0.9) 55%, rgba(125,211,252,0.85) 100%);
+  border: 4px solid #0284c7;
+  box-shadow: 0 8px 0 #0369a1, inset 0 5px 12px rgba(255,255,255,0.95), 0 14px 28px rgba(2,132,199,0.3);
+  border-radius: 2.25rem 2rem 2.5rem 1.9rem;
+}
+
+/* Floating underwater animation helper */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 3.8s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 74, 110, 0.6);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border: 2px solid #0369a1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7dd3fc;
+}
