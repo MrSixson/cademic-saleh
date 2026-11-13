@@ -24,7 +24,17 @@ export const SOUND_CHALLENGES: SoundChallenge[] = [
   { sound: 'صدای اول (ص)', target: 'صابون', options: ['صابون', 'سوزن', 'سیب', 'ساعت'] },
   { sound: 'صدای آخر (ش)', target: 'آتش', options: ['آتش', 'آب', 'نان', 'کتاب'] },
   { sound: 'صدای اول (ط)', target: 'طوطی', options: ['طوطی', 'توت', 'تاب', 'توپ'] },
-  { sound: 'صدای آخر (ز)', target: 'میز', options: ['میز', 'مداد', 'انار', 'آب'] }
+  { sound: 'صدای آخر (ز)', target: 'میز', options: ['میز', 'مداد', 'انار', 'آب'] },
+{
+    sound: 'صدای اول (ج)',
+    target: 'جوجه',
+    options: ['جوجه', 'قاشق', 'گلابی', 'پنجره'],
+    grade: 2,
+    skill: 'تشخیص صدای آغازین واژه',
+    answer: 'جوجه',
+    explanation: 'واژه‌ی جوجه با صدای «ج» آغاز می‌شود.'
+  }
+
 ];
 
 export const KHWA_CHALLENGES = [
@@ -109,6 +119,23 @@ export const SENTENCE_CHALLENGES = [
     skill: 'درک معنی واژه در بافت جمله',
     explanation: 'پُرکار یعنی کسی که کار زیادی انجام می‌دهد.'
   }
+,
+{
+    sentence: 'سارا کتابی را که امانت گرفته بود، پس از خواندن به ... برگرداند.',
+    answer: 'کتابخانه',
+    options: ['کتابخانه', 'نانوایی', 'زمین بازی', 'آشپزخانه'],
+    grade: 2,
+    skill: 'درک جمله و انتخاب واژه مناسب',
+    explanation: 'کتاب امانتی پس از خواندن به کتابخانه برگردانده می‌شود.'
+  },
+  {
+    sentence: 'واژه‌ی «شادمان» یعنی ...',
+    answer: 'خوشحال',
+    options: ['خوشحال', 'خسته', 'ترسیده', 'گرسنه'],
+    grade: 3,
+    skill: 'درک معنی واژه',
+    explanation: 'شادمان یعنی خوشحال و شاد.'
+  }
 
 ];
 
@@ -153,6 +180,27 @@ export const MISSING_LETTER_CHALLENGES = [
     skill: 'تشخیص نشانه‌های هم‌آوا',
     explanation: 'در واژه‌ی مزرعه، جای خالی با نشانه «ع» کامل می‌شود.'
   }
+,
+{
+    word: 'غذا',
+    hole: '...ذا',
+    correct: 'غ',
+    options: ['غ', 'ق', 'خ', 'ع'],
+    grade: 2,
+    skill: 'تکمیل واژه با نشانه هم‌آوا',
+    answer: 'غ',
+    explanation: 'واژه‌ی غذا با نشانه‌ی «غ» نوشته می‌شود.'
+  },
+  {
+    word: 'ظرف',
+    hole: '...رف',
+    correct: 'ظ',
+    options: ['ظ', 'ز', 'ذ', 'ض'],
+    grade: 3,
+    skill: 'تشخیص املای درست حروف هم‌آوا',
+    answer: 'ظ',
+    explanation: 'در واژه‌ی ظرف، صدای «ز» با نشانه‌ی «ظ» نوشته می‌شود.'
+  }
 
 ];
 
@@ -193,7 +241,17 @@ export const FOUR_FORM_CHALLENGES = [
   { word: 'هوا', correct: 'هـ', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
   { word: 'بهار', correct: 'ـهـ', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
   { word: 'نامه', correct: 'ـه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
-  { word: 'کوه', correct: 'ه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] }
+  { word: 'کوه', correct: 'ه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
+{
+    word: 'آفتاب',
+    correct: 'ـفـ',
+    options: ['فـ', 'ـفـ', 'ـف', 'ف'],
+    grade: 3,
+    skill: 'تشخیص شکل میانی نشانه',
+    answer: 'ـفـ',
+    explanation: 'نشانه‌ی «ف» در میانه‌ی واژه‌ی آفتاب به شکل «ـفـ» نوشته می‌شود.'
+  }
+
 ];
 
 export const SYLLABLE_BURGER_WORDS = [
@@ -240,6 +298,25 @@ export const SYLLABLE_BURGER_WORDS = [
     skill: 'بخش‌بندی واژه‌های سه‌بخشی',
     answer: 'پَ + رِس + تار',
     explanation: 'پرستار سه بخش دارد: پَ، رِس، تار.'
+  }
+,
+{
+    word: 'کبوتر',
+    emoji: '🕊️',
+    syllables: ['کَ', 'بو', 'تَر'],
+    grade: 2,
+    skill: 'بخش‌بندی و ساخت واژه',
+    answer: 'کَ + بو + تَر',
+    explanation: 'کبوتر سه بخش دارد: کَ، بو و تَر.'
+  },
+  {
+    word: 'کتابدار',
+    emoji: '📚',
+    syllables: ['کِ', 'تاب', 'دار'],
+    grade: 3,
+    skill: 'بخش‌بندی واژه‌های سه‌بخشی',
+    answer: 'کِ + تاب + دار',
+    explanation: 'کتابدار سه بخش دارد: کِ، تاب و دار.'
   }
 
 ];
@@ -474,6 +551,35 @@ export const RHYME_ROUNDS = [
     skill: 'تشخیص واژه‌های هم‌قافیه',
     answer: 'تیر و سیر',
     explanation: 'شیر، تیر و سیر به صدای «یر» پایان می‌یابند.'
+  }
+,
+{
+    baseWord: 'نور',
+    baseEmoji: '💡',
+    options: [
+      { id: 'r29', text: 'دور', isRhyme: true, emoji: '🔭' },
+      { id: 'r30', text: 'شور', isRhyme: true, emoji: '🧂' },
+      { id: 'r31', text: 'باران', isRhyme: false, emoji: '🌧️' },
+      { id: 'r32', text: 'کتاب', isRhyme: false, emoji: '📘' }
+    ],
+    grade: 2,
+    skill: 'شناخت قافیه و صدای پایانی',
+    answer: 'دور و شور',
+    explanation: 'نور، دور و شور به صدای «ور» پایان می‌یابند.'
+  },
+  {
+    baseWord: 'کار',
+    baseEmoji: '🛠️',
+    options: [
+      { id: 'r33', text: 'یار', isRhyme: true, emoji: '🤝' },
+      { id: 'r34', text: 'بهار', isRhyme: true, emoji: '🌸' },
+      { id: 'r35', text: 'مداد', isRhyme: false, emoji: '✏️' },
+      { id: 'r36', text: 'پنجره', isRhyme: false, emoji: '🪟' }
+    ],
+    grade: 3,
+    skill: 'تشخیص واژه‌های هم‌قافیه',
+    answer: 'یار و بهار',
+    explanation: 'کار، یار و بهار به صدای «ار» پایان می‌یابند.'
   }
 
 ];
