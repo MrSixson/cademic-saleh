@@ -2,6 +2,10 @@ export interface SoundChallenge {
   sound: string;
   target: string;
   options: string[];
+  grade?: 2 | 3;
+  skill?: string;
+  answer?: string;
+  explanation?: string;
 }
 
 export const SOUND_CHALLENGES: SoundChallenge[] = [
