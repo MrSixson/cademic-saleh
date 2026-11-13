@@ -384,7 +384,6 @@ export const RHYME_ROUNDS = [
     ]
   },
   {
-    baseWord: 'باران',  {
     baseWord: 'نور',
     baseEmoji: '💡',
     options: [
@@ -413,6 +412,8 @@ export const RHYME_ROUNDS = [
     explanation: 'کار، یار و بهار به صدای «ار» پایان می‌یابند.'
   },
 
+  {
+    baseWord: 'باران',
     baseEmoji: '🌧️',
     options: [
       { id: 'r5', text: 'آسمان', isRhyme: true, emoji: '☁️' },
