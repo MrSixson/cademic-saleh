@@ -6,6 +6,15 @@ export interface SoundChallenge {
 
 export const SOUND_CHALLENGES: SoundChallenge[] = [
   { sound: 'صدای اول (آ)', target: 'آب', options: ['آب', 'بابا', 'دست', 'مداد'] },
+  {
+    sound: 'صدای اول (ج)',
+    target: 'جوجه',
+    options: ['جوجه', 'قاشق', 'گلابی', 'پنجره'],
+    grade: 2,
+    skill: 'تشخیص صدای آغازین واژه',
+    answer: 'جوجه',
+    explanation: 'واژه‌ی جوجه با صدای «ج» آغاز می‌شود.'
+  },
   { sound: 'صدای اول (ب)', target: 'باران', options: ['باران', 'مادر', 'دریا', 'نان'] },
   { sound: 'صدای اول (م)', target: 'مدرسه', options: ['مدرسه', 'کتاب', 'پرچم', 'سیب'] },
   { sound: 'صدای اول (ک)', target: 'کتاب', options: ['کتاب', 'مداد', 'باران', 'تاب'] },
@@ -72,6 +81,22 @@ export const TANVIN_CHALLENGES = [
 
 export const SENTENCE_CHALLENGES = [
   { sentence: 'من هر روز به ... می‌روم.', answer: 'مدرسه', options: ['مدرسه', 'دریا', 'باغ', 'خانه'] },
+  {
+    sentence: 'سارا کتابی را که امانت گرفته بود، پس از خواندن به ... برگرداند.',
+    answer: 'کتابخانه',
+    options: ['کتابخانه', 'نانوایی', 'زمین بازی', 'آشپزخانه'],
+    grade: 2,
+    skill: 'درک جمله و انتخاب واژه مناسب',
+    explanation: 'کتاب امانتی پس از خواندن به کتابخانه برگردانده می‌شود.'
+  },
+  {
+    sentence: 'واژه‌ی «شادمان» یعنی ...',
+    answer: 'خوشحال',
+    options: ['خوشحال', 'خسته', 'ترسیده', 'گرسنه'],
+    grade: 3,
+    skill: 'درک معنی واژه',
+    explanation: 'شادمان یعنی خوشحال و شاد.'
+  },
   { sentence: 'مادر برای من یک ... خرید.', answer: 'دفتر', options: ['دفتر', 'باران', 'پرنده', 'درخت'] },
   { sentence: 'پرنده روی شاخه‌ی ... نشست.', answer: 'درخت', options: ['درخت', 'مداد', 'کفش', 'نان'] },
   { sentence: 'ما با ... نقاشی می‌کشیم.', answer: 'مداد', options: ['مداد', 'قاشق', 'توپ', 'باران'] },
@@ -95,6 +120,26 @@ export const SENTENCE_CHALLENGES = [
 
 export const MISSING_LETTER_CHALLENGES = [
   { word: 'صابون', hole: '...ابون', correct: 'ص', options: ['ص', 'س', 'ث', 'ش'] },
+  {
+    word: 'غذا',
+    hole: '...ذا',
+    correct: 'غ',
+    options: ['غ', 'ق', 'خ', 'ع'],
+    grade: 2,
+    skill: 'تکمیل واژه با نشانه هم‌آوا',
+    answer: 'غ',
+    explanation: 'واژه‌ی غذا با نشانه‌ی «غ» نوشته می‌شود.'
+  },
+  {
+    word: 'ظرف',
+    hole: '...رف',
+    correct: 'ظ',
+    options: ['ظ', 'ز', 'ذ', 'ض'],
+    grade: 3,
+    skill: 'تشخیص املای درست حروف هم‌آوا',
+    answer: 'ظ',
+    explanation: 'در واژه‌ی ظرف، صدای «ز» با نشانه‌ی «ظ» نوشته می‌شود.'
+  },
   { word: 'صدف', hole: '...دف', correct: 'ص', options: ['ص', 'س', 'ث', 'ش'] },
   { word: 'صورت', hole: '...ورت', correct: 'ص', options: ['ص', 'س', 'ث', 'ش'] },
   { word: 'صندوق', hole: '...ندوق', correct: 'ص', options: ['ص', 'س', 'ث', 'ش'] },
@@ -137,6 +182,15 @@ export const SIMILAR_LETTER_CHALLENGES = [
 
 export const FOUR_FORM_CHALLENGES = [
   { word: 'عینک', correct: 'عـ', options: ['عـ', 'ـعـ', 'ـع', 'ع'] },
+  {
+    word: 'سفید',
+    correct: 'ـفـ',
+    options: ['فـ', 'ـفـ', 'ـف', 'ف'],
+    grade: 3,
+    skill: 'تشخیص شکل میانی نشانه',
+    answer: 'ـفـ',
+    explanation: 'نشانه‌ی «ف» در میانه‌ی واژه‌ی سفید به شکل «ـفـ» نوشته می‌شود.'
+  },
   { word: 'ساعت', correct: 'ـعـ', options: ['عـ', 'ـعـ', 'ـع', 'ع'] },
   { word: 'مزرعه', correct: 'ـع', options: ['عـ', 'ـعـ', 'ـع', 'ع'] },
   { word: 'شمع', correct: 'ع', options: ['عـ', 'ـعـ', 'ـع', 'ع'] },
@@ -158,6 +212,24 @@ export const FOUR_FORM_CHALLENGES = [
 
 export const SYLLABLE_BURGER_WORDS = [
   { word: 'باران', emoji: '🌧️', syllables: ['با', 'ران'] },
+  {
+    word: 'کبوتر',
+    emoji: '🕊️',
+    syllables: ['کَ', 'بو', 'تَر'],
+    grade: 2,
+    skill: 'بخش‌بندی و ساخت واژه',
+    answer: 'کَ + بو + تَر',
+    explanation: 'کبوتر سه بخش دارد: کَ، بو و تَر.'
+  },
+  {
+    word: 'کتابدار',
+    emoji: '📚',
+    syllables: ['کِ', 'تاب', 'دار'],
+    grade: 3,
+    skill: 'بخش‌بندی واژه‌های سه‌بخشی',
+    answer: 'کِ + تاب + دار',
+    explanation: 'کتابدار سه بخش دارد: کِ، تاب و دار.'
+  },
   { word: 'مدرسه', emoji: '🏫', syllables: ['مَد', 'رِ', 'سه'] },
   { word: 'خرچنگ', emoji: '🦀', syllables: ['خَر', 'چَنگ'] },
   { word: 'ستاره', emoji: '⭐', syllables: ['سِ', 'تا', 'ره'] },
@@ -312,7 +384,35 @@ export const RHYME_ROUNDS = [
     ]
   },
   {
-    baseWord: 'باران',
+    baseWord: 'باران',  {
+    baseWord: 'نور',
+    baseEmoji: '💡',
+    options: [
+      { id: 'r29', text: 'دور', isRhyme: true, emoji: '🔭' },
+      { id: 'r30', text: 'شور', isRhyme: true, emoji: '🧂' },
+      { id: 'r31', text: 'باران', isRhyme: false, emoji: '🌧️' },
+      { id: 'r32', text: 'کتاب', isRhyme: false, emoji: '📘' }
+    ],
+    grade: 2,
+    skill: 'شناخت قافیه و صدای پایانی',
+    answer: 'دور و شور',
+    explanation: 'نور، دور و شور به صدای «ور» پایان می‌یابند.'
+  },
+  {
+    baseWord: 'کار',
+    baseEmoji: '🛠️',
+    options: [
+      { id: 'r33', text: 'یار', isRhyme: true, emoji: '🤝' },
+      { id: 'r34', text: 'بهار', isRhyme: true, emoji: '🌸' },
+      { id: 'r35', text: 'مداد', isRhyme: false, emoji: '✏️' },
+      { id: 'r36', text: 'پنجره', isRhyme: false, emoji: '🪟' }
+    ],
+    grade: 3,
+    skill: 'تشخیص واژه‌های هم‌قافیه',
+    answer: 'یار و بهار',
+    explanation: 'کار، یار و بهار به صدای «ار» پایان می‌یابند.'
+  },
+
     baseEmoji: '🌧️',
     options: [
       { id: 'r5', text: 'آسمان', isRhyme: true, emoji: '☁️' },
