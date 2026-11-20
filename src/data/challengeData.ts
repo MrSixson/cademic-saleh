@@ -90,7 +90,23 @@ export const SENTENCE_CHALLENGES = [
   { sentence: 'وقتی تشنه می‌شوم، ... می‌نوشم.', answer: 'آب', options: ['آب', 'کتاب', 'خاک', 'برگ'] },
   { sentence: 'در شب، ... در آسمان می‌درخشد.', answer: 'ستاره', options: ['ستاره', 'مداد', 'صندوق', 'مدرسه'] },
   { sentence: 'برای دوختن لباس از ... استفاده می‌کنند.', answer: 'سوزن', options: ['سوزن', 'قاشق', 'توپ', 'کتاب'] },
-  { sentence: 'فردوسی شاعر بزرگ زبان ... است.', answer: 'فارسی', options: ['فارسی', 'بارانی', 'مدادی', 'دریایی'] }
+  { sentence: 'فردوسی شاعر بزرگ زبان ... است.', answer: 'فارسی', options: ['فارسی', 'بارانی', 'مدادی', 'دریایی'] },
+  {
+    sentence: 'برای اندازه‌گیری طول میز از ... استفاده می‌کنیم.',
+    answer: 'خط‌کش',
+    options: ['خط‌کش', 'پاک‌کن', 'بشقاب', 'توپ'],
+    grade: 2,
+    skill: 'تکمیل جمله و انتخاب واژه مناسب',
+    explanation: 'خط‌کش برای اندازه‌گیری طول به کار می‌رود.'
+  },
+  {
+    sentence: 'نیما هر روز به نهال آب می‌داد و از مراقبت آن دست نمی‌کشید. واژه‌ی «کوشا» برای نیما یعنی ...',
+    answer: 'پرتلاش',
+    options: ['پرتلاش', 'بی‌دقت', 'تنبل', 'بی‌حوصله'],
+    grade: 3,
+    skill: 'درک مطلب کوتاه و معنی واژه در بافت جمله',
+    explanation: 'کوشا یعنی پرتلاش؛ نیما هر روز از نهال مراقبت می‌کرد.'
+  }
 ];
 
 export const MISSING_LETTER_CHALLENGES = [
@@ -113,7 +129,27 @@ export const MISSING_LETTER_CHALLENGES = [
   { word: 'ستاره', hole: '...تاره', correct: 'س', options: ['س', 'ص', 'ث', 'ش'] },
   { word: 'گندم', hole: '...ندم', correct: 'گ', options: ['گ', 'ک', 'ق', 'غ'] },
   { word: 'پروانه', hole: '...روانه', correct: 'پ', options: ['پ', 'ب', 'ت', 'ث'] },
-  { word: 'خورشید', hole: 'خور...ید', correct: 'ش', options: ['ش', 'س', 'ص', 'ث'] }
+  { word: 'خورشید', hole: 'خور...ید', correct: 'ش', options: ['ش', 'س', 'ص', 'ث'] },
+  {
+    word: 'دوست',
+    hole: 'دو...ت',
+    correct: 'س',
+    options: ['س', 'ص', 'ث', 'ش'],
+    grade: 2,
+    skill: 'تکمیل واژه با نشانه درست',
+    answer: 'س',
+    explanation: 'واژه‌ی دوست با نشانه‌ی «س» نوشته می‌شود.'
+  },
+  {
+    word: 'نظافت',
+    hole: 'ن...افت',
+    correct: 'ظ',
+    options: ['ظ', 'ز', 'ذ', 'ض'],
+    grade: 3,
+    skill: 'تشخیص املای درست حروف هم‌آوا',
+    answer: 'ظ',
+    explanation: 'واژه‌ی نظافت با نشانه‌ی «ظ» نوشته می‌شود.'
+  }
 ];
 
 export const SIMILAR_LETTER_CHALLENGES = [
@@ -153,7 +189,16 @@ export const FOUR_FORM_CHALLENGES = [
   { word: 'هوا', correct: 'هـ', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
   { word: 'بهار', correct: 'ـهـ', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
   { word: 'نامه', correct: 'ـه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
-  { word: 'کوه', correct: 'ه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] }
+  { word: 'کوه', correct: 'ه', options: ['هـ', 'ـهـ', 'ـه', 'ه'] },
+  {
+    word: 'قلم',
+    correct: 'قـ',
+    options: ['قـ', 'ـقـ', 'ـق', 'ق'],
+    grade: 2,
+    skill: 'تشخیص شکل آغازین نشانه',
+    answer: 'قـ',
+    explanation: 'نشانه‌ی «ق» در آغاز واژه‌ی قلم به شکل «قـ» می‌آید.'
+  }
 ];
 
 export const SYLLABLE_BURGER_WORDS = [
@@ -180,7 +225,25 @@ export const SYLLABLE_BURGER_WORDS = [
   { word: 'دانشمند', emoji: '🧑‍🔬', syllables: ['دا', 'نِش', 'مَند'] },
   { word: 'کتابخانه', emoji: '📚', syllables: ['کِ', 'تاب', 'خا', 'نه'] },
   { word: 'اقیانوس', emoji: '🌊', syllables: ['اُق', 'یا', 'نوس'] },
-  { word: 'آموزگار', emoji: '👩‍🏫', syllables: ['آ', 'موز', 'گار'] }
+  { word: 'آموزگار', emoji: '👩‍🏫', syllables: ['آ', 'موز', 'گار'] },
+  {
+    word: 'مداد',
+    emoji: '✏️',
+    syllables: ['مِ', 'داد'],
+    grade: 2,
+    skill: 'واژه‌سازی و بخش‌بندی واژه‌ی دوبخشی',
+    answer: 'مِ + داد',
+    explanation: 'واژه‌ی مداد از دو بخش «مِ» و «داد» ساخته می‌شود.'
+  },
+  {
+    word: 'کتابچه',
+    emoji: '📖',
+    syllables: ['کِ', 'تاب', 'چِ'],
+    grade: 3,
+    skill: 'بخش‌بندی واژه‌ی سه‌بخشی',
+    answer: 'کِ + تاب + چِ',
+    explanation: 'واژه‌ی کتابچه سه بخش شنیداری دارد: کِ، تاب و چِ.'
+  }
 ];
 
 export const JELLYFISH_ROUNDS = [
@@ -238,6 +301,21 @@ export const JELLYFISH_ROUNDS = [
       { id: 'j29', text: 'خروس', isTarget: false, color: 'from-amber-500 to-orange-600' },
       { id: 'j30', text: 'خندان', isTarget: false, color: 'from-emerald-500 to-teal-600' }
     ]
+  },
+  {
+    prompt: 'واژه‌هایی را که با نشانه‌ی «م» آغاز می‌شوند با تور شکار کن!',
+    items: [
+      { id: 'j43', text: 'مادر', isTarget: true, color: 'from-pink-500 to-rose-600' },
+      { id: 'j44', text: 'موز', isTarget: true, color: 'from-purple-500 to-pink-600' },
+      { id: 'j45', text: 'مینا', isTarget: true, color: 'from-fuchsia-500 to-purple-600' },
+      { id: 'j46', text: 'نان', isTarget: false, color: 'from-cyan-500 to-blue-600' },
+      { id: 'j47', text: 'سیب', isTarget: false, color: 'from-amber-500 to-orange-600' },
+      { id: 'j48', text: 'باران', isTarget: false, color: 'from-emerald-500 to-teal-600' }
+    ],
+    grade: 2,
+    skill: 'تشخیص نشانه‌ی آغازین واژه',
+    answer: 'مادر، موز و مینا',
+    explanation: 'هر سه واژه با نشانه‌ی «م» آغاز می‌شوند.'
   }
 ];
 
@@ -297,6 +375,18 @@ export const KARATE_ROUNDS = [
       { id: 'k20', text: 'معلّلم❌', isWrongWord: true, correctForm: 'معلّم', explanation: 'معلّم با تشدید روی یک ل نوشته می‌شود نه دو ل جدا' },
       { id: 'k21', text: 'نجّار✅', isWrongWord: false }
     ]
+  },
+  {
+    prompt: 'تخته‌ای را که واژه‌ی آن نادرست نوشته شده است، با ضربه کاراته خرد کن!',
+    boards: [
+      { id: 'k22', text: 'گذارش❌', isWrongWord: true, correctForm: 'گزارش', explanation: 'گزارش با «ز» نوشته می‌شود؛ «گذاشتن» واژه‌ی دیگری با «ذ» است.' },
+      { id: 'k23', text: 'گذاشتن✅', isWrongWord: false },
+      { id: 'k24', text: 'آواز✅', isWrongWord: false }
+    ],
+    grade: 3,
+    skill: 'تشخیص املای درست واژه‌های هم‌آوا',
+    answer: 'گزارش',
+    explanation: 'املای درست «گزارش» با نشانه‌ی «ز» است.'
   }
 ];
 
@@ -350,6 +440,20 @@ export const RHYME_ROUNDS = [
       { id: 'r19', text: 'درخت', isRhyme: false, emoji: '🌳' },
       { id: 'r20', text: 'پلنگ', isRhyme: true, emoji: '🐆' }
     ]
+  },
+  {
+    baseWord: 'دود',
+    baseEmoji: '💨',
+    options: [
+      { id: 'r37', text: 'زود', isRhyme: true, emoji: '⏩' },
+      { id: 'r38', text: 'رود', isRhyme: true, emoji: '🏞️' },
+      { id: 'r39', text: 'کتاب', isRhyme: false, emoji: '📘' },
+      { id: 'r40', text: 'سیب', isRhyme: false, emoji: '🍎' }
+    ],
+    grade: 3,
+    skill: 'تشخیص واژه‌های هم‌قافیه',
+    answer: 'زود و رود',
+    explanation: 'دود، زود و رود همگی به صدای «ود» پایان می‌یابند.'
   }
 ];
 
